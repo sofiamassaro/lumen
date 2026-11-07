@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMEN — Manual de Identidade Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15294B;--navy-2:#1F3D66;--brass:#A67C3D;--brass-2:#8A6530;
+    --brass-tint:#F4EDDC;--steel-tint:#EAEDF3;--ivory:#F5F3ED;--card:#FFFFFF;
+    --ink:#1A2438;--muted:#5A6578;--line:#E6E1D5;
+  }
+  *{box-sizing:border-box}html,body{margin:0}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .page{max-width:1080px;margin:0 auto;padding:0 28px 88px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-2)}
+  h2.sec{font-family:"Spectral",serif;font-weight:600;font-size:29px;color:var(--navy);margin:12px 0 4px}
+  .sec-sub{font-size:15px;color:var(--muted);max-width:62ch;margin:0 0 30px}
+  section.block{padding:64px 0;border-bottom:1px solid var(--line)}
+
+  /* Monogram helper */
+  .mono text{font-family:"Spectral",serif;font-weight:700}
+
+  /* HERO */
+  .hero{padding:74px 0 60px;border-bottom:2px solid var(--brass);display:flex;align-items:center;gap:34px;flex-wrap:wrap}
+  .hero .tile{width:104px;height:104px;border-radius:26px;background:var(--navy);display:grid;place-items:center;box-shadow:0 12px 30px rgba(21,41,75,.24);flex:none}
+  .hero .tile svg{width:66px}
+  .hero .kicker{margin-bottom:14px}
+  .hero .wm{font-family:"Spectral",serif;font-weight:600;font-size:60px;letter-spacing:.16em;color:var(--navy);line-height:1;padding-left:.16em}
+  .hero .tag{margin-top:16px;font-family:"Spectral",serif;font-style:italic;font-size:19px;color:var(--navy-2)}
+  .hero .meta{margin-top:4px;font-size:13px;color:var(--muted)}
+
+  /* SYMBOL */
+  .sym-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch}
+  @media(max-width:820px){.sym-grid{grid-template-columns:1fr}}
+  .surface{border-radius:18px;padding:40px;display:flex;align-items:center;justify-content:center;gap:34px;border:1px solid var(--line);flex-wrap:wrap}
+  .surface.on-navy{background:var(--navy);border-color:var(--navy)}
+  .surface.on-ivory{background:var(--ivory)}
+  .tile-lg{width:120px;height:120px;border-radius:28px;background:var(--navy);display:grid;place-items:center;box-shadow:0 12px 30px rgba(21,41,75,.24)}
+  .tile-lg svg{width:76px}
+  .favs{display:flex;gap:12px;align-items:flex-end}
+  .favs .f{border-radius:8px;background:var(--navy);display:grid;place-items:center}
+  .cap{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .why h4{font-family:"Spectral",serif;font-weight:600;font-size:17px;color:var(--navy);margin:0 0 10px}
+  .why p{font-size:13.5px;color:var(--muted);margin:0 0 12px}
+  .why p:last-child{margin-bottom:0}
+
+  /* WORDMARK */
+  .wm-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.wm-grid{grid-template-columns:1fr}}
+  .wm-box{border-radius:16px;min-height:150px;display:grid;place-items:center;padding:30px;border:1px solid var(--line)}
+  .wm-box.on-navy{background:var(--navy);border-color:var(--navy)}
+  .wm-box .wm{font-family:"Spectral",serif;font-weight:600;font-size:42px;letter-spacing:.16em;line-height:1;padding-left:.16em}
+  .wm.navy{color:var(--navy)}.wm.ivory{color:var(--ivory)}
+
+  /* PALETTE */
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:820px){.swatches{grid-template-columns:repeat(2,1fr)}}
+  .sw{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+  .sw .chip{height:92px}
+  .sw .info{padding:12px 14px}
+  .sw .nm{font-family:"Spectral",serif;font-weight:600;font-size:15px;color:var(--navy)}
+  .sw .hx{font-size:12px;color:var(--muted);letter-spacing:.03em;margin-top:1px}
+  .sw .use{font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.45}
+
+  /* TYPE */
+  .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:820px){.type-grid{grid-template-columns:1fr}}
+  .tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .tcard .tlabel{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:16px}
+  .tcard .tfam{font-family:"Spectral",serif;font-weight:600;font-size:20px;color:var(--navy)}
+  .tcard.body .tfam{font-family:"Inter";font-weight:600}
+  .tcard .trole{font-size:11px;color:var(--brass-2);font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+  .serif-spec{font-family:"Spectral",serif;color:var(--navy)}
+  .serif-spec .aa{font-size:44px;font-weight:600;line-height:1;letter-spacing:.02em}
+  .serif-spec .line{font-size:19px;font-weight:500;margin-top:14px}
+  .serif-spec .it{font-style:italic;color:var(--navy-2);font-size:17px;margin-top:6px}
+  .sans-spec{font-family:"Inter";color:var(--ink)}
+  .sans-spec .aa{font-size:40px;font-weight:600;line-height:1}
+  .sans-spec .line{font-size:15px;margin-top:14px;color:var(--muted)}
+  .weights{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--muted)}
+  .weights b{color:var(--ink)}
+
+  /* USAGE */
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.rules{grid-template-columns:1fr}}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .rule h4{font-family:"Spectral",serif;font-weight:600;font-size:16px;color:var(--navy);margin:0 0 8px}
+  .rule p{font-size:13px;color:var(--muted);margin:0}
+  .clearspace{margin-top:18px;background:repeating-linear-gradient(45deg,var(--steel-tint),var(--steel-tint) 6px,transparent 6px,transparent 12px);border:1px dashed var(--line);border-radius:10px;padding:24px;display:grid;place-items:center}
+  .clearspace .inner{background:var(--ivory);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;place-items:center}
+  .dont-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+  .dont{flex:1;min-width:110px;border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+  .dont .mini{width:60px;height:60px;display:grid;place-items:center;border-radius:8px}
+  .ok{font-size:11px;color:var(--brass-2);font-weight:600}
+  .no{font-size:11px;color:#B4442E;font-weight:600}
+
+  /* APPS */
+  .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.apps{grid-template-columns:1fr}}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .app .cap{margin-top:0}
+  .tile{width:100px;height:100px;border-radius:24px;background:var(--navy);display:grid;place-items:center;box-shadow:0 10px 26px rgba(21,41,75,.22)}
+  .tile svg{width:62px}
+  .card-mock{width:100%;aspect-ratio:1.75/1;border-radius:12px;background:linear-gradient(150deg,var(--navy),var(--navy-2));padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 26px rgba(21,41,75,.2)}
+  .card-mock .top{display:flex;align-items:center;gap:11px}
+  .card-mock .top .wm{font-family:"Spectral",serif;font-weight:600;font-size:20px;letter-spacing:.14em;color:var(--ivory);padding-left:.14em}
+  .card-mock .who .n{font-family:"Spectral",serif;font-size:14px;font-weight:600;color:var(--ivory)}
+  .card-mock .who .r{font-size:10.5px;color:rgba(245,243,237,.7);letter-spacing:.06em}
+
+  /* FIGMA CALLOUT */
+  .figma{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;margin-top:14px}
+  .figma h3{font-family:"Spectral",serif;font-weight:600;font-size:20px;color:var(--navy);margin:0 0 6px}
+  .figma .sub{font-size:13.5px;color:var(--muted);margin:0 0 22px}
+  .fg-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
+  @media(max-width:820px){.fg-cols{grid-template-columns:1fr}}
+  .fg h5{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-2);margin:0 0 12px}
+  .fg ul{margin:0;padding:0;list-style:none;font-size:12.5px;color:var(--ink)}
+  .fg li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+  .fg li span.k{color:var(--muted)}
+  .fg li span.v{font-variant-numeric:tabular-nums;color:var(--navy);font-weight:500}
+  .fg .recipe{font-size:12.5px;color:var(--muted);line-height:1.6}
+  .fg .recipe b{color:var(--navy)}
+
+  footer{padding-top:44px;color:var(--muted);font-size:13px}
+  footer strong{color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="tile">
+      <svg class="mono" viewBox="0 0 100 100" aria-label="Símbolo LUMEN">
+        <text x="28" y="78" font-size="74" fill="#F5F3ED">L</text>
+        <circle cx="34" cy="18" r="8" fill="#A67C3D"/>
+      </svg>
+    </div>
+    <div>
+      <div class="kicker eyebrow">Manual de identidade visual</div>
+      <div class="wm">LUMEN</div>
+      <div class="tag">clareza onde antes havia juridiquês</div>
+      <div class="meta">Portal de acompanhamento processual · v1 · marinho / dourado / marfim</div>
+    </div>
+  </header>
+
+  <!-- SYMBOL -->
+  <section class="block">
+    <div class="eyebrow">O símbolo</div>
+    <h2 class="sec">O monograma</h2>
+    <p class="sec-sub">Um único símbolo: o "L" da própria Spectral do nome, encimado por um ponto de luz dourado. Reaproveita a letra do logotipo — nada é estranho ao sistema — e carrega o dourado como o "lúmen", a luz que dá nome à marca.</p>
+
+    <div class="sym-grid">
+      <div class="surface on-navy">
+        <div>
+          <div class="tile-lg">
+            <svg class="mono" viewBox="0 0 100 100" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="8" fill="#A67C3D"/></svg>
+          </div>
+          <div class="cap">Símbolo · ícone do app</div>
+        </div>
+        <div>
+          <div class="favs">
+            <div class="f" style="width:52px;height:52px"><svg class="mono" viewBox="0 0 100 100" width="34" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="9" fill="#A67C3D"/></svg></div>
+            <div class="f" style="width:32px;height:32px"><svg class="mono" viewBox="0 0 100 100" width="21" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="17" r="10" fill="#A67C3D"/></svg></div>
+            <div class="f" style="width:20px;height:20px"><svg class="mono" viewBox="0 0 100 100" width="13" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="16" r="11" fill="#A67C3D"/></svg></div>
+          </div>
+          <div class="cap">Favicon · 52 / 32 / 20 px</div>
+        </div>
+      </div>
+
+      <div class="why">
+        <h4>Por que esse traço</h4>
+        <p>Escolhemos a versão serifada porque é a única que nasce do próprio logotipo: a mesma letra, o mesmo peso da Spectral. Símbolo e nome nunca se contradizem.</p>
+        <p>O ponto dourado não é enfeite — é o significado do nome tornado sinal. Ele sobe um pouco no tamanho pequeno para não sumir no favicon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORDMARK -->
+  <section class="block">
+    <div class="eyebrow">O logotipo</div>
+    <h2 class="sec">LUMEN por extenso</h2>
+    <p class="sec-sub">Como o nome é uma palavra inteira, o logotipo principal é a própria palavra em Spectral, com entreletra generosa (0,16em). Use o logotipo em cabeçalhos e documentos; o símbolo entra só onde a palavra não cabe (ícone, avatar, carimbo).</p>
+
+    <div class="wm-grid">
+      <div class="wm-box on-navy"><span class="wm ivory">LUMEN</span></div>
+      <div class="wm-box"><span class="wm navy">LUMEN</span></div>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section class="block">
+    <div class="eyebrow">Paleta</div>
+    <h2 class="sec">Marinho institui, dourado esclarece</h2>
+    <p class="sec-sub">A cor carrega a tese do produto: o marinho é o lado institucional do escritório; o dourado é tudo o que fala com o cliente. Nunca decore com o dourado — ele sempre marca o que o cliente entende.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#15294B"></div><div class="info"><div class="nm">Marinho</div><div class="hx">#15294B</div><div class="use">Cor institucional. Fundos, texto de peso, estrutura.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1F3D66"></div><div class="info"><div class="nm">Marinho 2</div><div class="hx">#1F3D66</div><div class="use">Apoio do marinho em gradientes e ícones.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A67C3D"></div><div class="info"><div class="nm">Dourado</div><div class="hx">#A67C3D</div><div class="use">Acento do cliente: tradução, próximo passo, luz.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8A6530"></div><div class="info"><div class="nm">Dourado 2</div><div class="hx">#8A6530</div><div class="use">Dourado sobre fundo claro, para contraste de texto.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F5F3ED;border-bottom:1px solid var(--line)"></div><div class="info"><div class="nm">Marfim</div><div class="hx">#F5F3ED</div><div class="use">Fundo geral. Papel do sistema.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F4EDDC"></div><div class="info"><div class="nm">Dourado suave</div><div class="hx">#F4EDDC</div><div class="use">Realce discreto de blocos do cliente.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#EAEDF3"></div><div class="info"><div class="nm">Aço suave</div><div class="hx">#EAEDF3</div><div class="use">Realce discreto de blocos institucionais.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1A2438"></div><div class="info"><div class="nm">Tinta</div><div class="hx">#1A2438</div><div class="use">Texto corrido. Secundário #5A6578, linhas #E6E1D5.</div></div></div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section class="block">
+    <div class="eyebrow">Tipografia</div>
+    <h2 class="sec">Serifada para a autoridade, sem-serifa para a clareza</h2>
+    <p class="sec-sub">Spectral dá o peso de um escritório nos títulos, no nome e no símbolo. Inter cuida do texto e da interface, onde a legibilidade importa mais que a personalidade.</p>
+    <div class="type-grid">
+      <div class="tcard">
+        <div class="tlabel"><span class="tfam">Spectral</span><span class="trole">Display · símbolo</span></div>
+        <div class="serif-spec"><div class="aa">Aa Bb Cc</div><div class="line">Acompanhamento com clareza</div><div class="it">itálico para ênfase editorial</div></div>
+        <div class="weights"><span>Pesos: <b>600</b> · <b>700</b></span><span>títulos · nome · monograma</span></div>
+      </div>
+      <div class="tcard body">
+        <div class="tlabel"><span class="tfam">Inter</span><span class="trole">Corpo · interface</span></div>
+        <div class="sans-spec"><div class="aa">Aa Bb Cc</div><div class="line">Seu recurso foi aceito e a suspensão da CNH foi cancelada. Você não precisa fazer nada por ora.</div></div>
+        <div class="weights"><span>Pesos: <b>400</b> · <b>500</b> · <b>600</b></span><span>texto · botões · dados</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USAGE -->
+  <section class="block">
+    <div class="eyebrow">Uso correto</div>
+    <h2 class="sec">Regras que protegem a marca</h2>
+    <p class="sec-sub">Poucas regras, todas rígidas. É o que faz a identidade parecer cuidada em qualquer aplicação.</p>
+    <div class="rules">
+      <div class="rule">
+        <h4>Espaço de proteção</h4>
+        <p>Ao redor do símbolo ou do logotipo, mantenha uma margem livre igual à altura do ponto dourado. Nada de texto, borda ou imagem dentro dela.</p>
+        <div class="clearspace"><div class="inner">
+          <svg class="mono" viewBox="0 0 100 100" width="46" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#15294B">L</text><circle cx="34" cy="18" r="8" fill="#A67C3D"/></svg>
+        </div></div>
+      </div>
+      <div class="rule">
+        <h4>Fundos permitidos</h4>
+        <p>Símbolo marfim+dourado sobre marinho (principal), ou marinho+dourado sobre marfim. Evite fundos de baixo contraste ou imagens ruidosas atrás da marca.</p>
+        <div class="dont-row">
+          <div class="dont"><div class="mini" style="background:var(--navy)"><svg class="mono" viewBox="0 0 100 100" width="34" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="9" fill="#A67C3D"/></svg></div><span class="ok">Sobre marinho ✓</span></div>
+          <div class="dont"><div class="mini" style="background:var(--brass)"><svg class="mono" viewBox="0 0 100 100" width="34" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="9" fill="#8A6530"/></svg></div><span class="no">Dourado sobre dourado ✕</span></div>
+        </div>
+      </div>
+      <div class="rule">
+        <h4>Tamanho mínimo</h4>
+        <p>O símbolo não desce abaixo de 20&nbsp;px de altura; o logotipo por extenso, não abaixo de 22&nbsp;mm impresso ou 120&nbsp;px em tela. Menor que isso, use só o símbolo.</p>
+      </div>
+      <div class="rule">
+        <h4>Não faça</h4>
+        <p>Não recolora fora da paleta, não distorça a proporção, não troque a Spectral por outra serifada, não incline nem adicione sombra ou contorno ao símbolo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section class="block">
+    <div class="eyebrow">Aplicações</div>
+    <h2 class="sec">Como aparece no mundo</h2>
+    <p class="sec-sub">A mesma marca, do ícone do app ao cabeçalho do portal que você já construiu.</p>
+    <div class="apps">
+      <div class="app">
+        <div class="tile"><svg class="mono" viewBox="0 0 100 100" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="8" fill="#A67C3D"/></svg></div>
+        <div class="cap">Ícone do aplicativo</div>
+      </div>
+      <div class="app">
+        <div class="favs">
+          <div class="f" style="width:52px;height:52px"><svg class="mono" viewBox="0 0 100 100" width="34" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="9" fill="#A67C3D"/></svg></div>
+          <div class="f" style="width:32px;height:32px"><svg class="mono" viewBox="0 0 100 100" width="21" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="17" r="10" fill="#A67C3D"/></svg></div>
+          <div class="f" style="width:20px;height:20px"><svg class="mono" viewBox="0 0 100 100" width="13" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="16" r="11" fill="#A67C3D"/></svg></div>
+        </div>
+        <div class="cap">Favicon em escala</div>
+      </div>
+      <div class="app">
+        <div class="card-mock">
+          <div class="top">
+            <svg class="mono" viewBox="0 0 100 100" width="28" aria-hidden="true"><text x="28" y="78" font-size="74" fill="#F5F3ED">L</text><circle cx="34" cy="18" r="9" fill="#A67C3D"/></svg>
+            <span class="wm">LUMEN</span>
+          </div>
+          <div class="who"><div class="n">Dra. Sofia Massaro</div><div class="r">ADVOCACIA · OAB/SC</div></div>
+        </div>
+        <div class="cap">Cartão / papelaria</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIGMA -->
+  <section class="block" style="border-bottom:none">
+    <div class="eyebrow">Para o Figma</div>
+    <h2 class="sec">Tudo pronto pra virar estilo e componente</h2>
+    <p class="sec-sub">Este é o passo que economiza tempo: monte os estilos base antes de desenhar qualquer tela. Abaixo, os valores já organizados do jeito que o Figma pede.</p>
+
+    <div class="figma">
+      <h3>Estilos base</h3>
+      <p class="sub">Crie primeiro os Color Styles e Text Styles; depois transforme o símbolo em componente.</p>
+      <div class="fg-cols">
+        <div class="fg">
+          <h5>Color Styles</h5>
+          <ul>
+            <li><span class="k">Marinho</span><span class="v">#15294B</span></li>
+            <li><span class="k">Marinho 2</span><span class="v">#1F3D66</span></li>
+            <li><span class="k">Dourado</span><span class="v">#A67C3D</span></li>
+            <li><span class="k">Dourado 2</span><span class="v">#8A6530</span></li>
+            <li><span class="k">Marfim</span><span class="v">#F5F3ED</span></li>
+            <li><span class="k">Dourado suave</span><span class="v">#F4EDDC</span></li>
+            <li><span class="k">Aço suave</span><span class="v">#EAEDF3</span></li>
+            <li><span class="k">Tinta</span><span class="v">#1A2438</span></li>
+            <li><span class="k">Secundário</span><span class="v">#5A6578</span></li>
+            <li><span class="k">Linha</span><span class="v">#E6E1D5</span></li>
+          </ul>
+        </div>
+        <div class="fg">
+          <h5>Text Styles</h5>
+          <ul>
+            <li><span class="k">Display / nome</span><span class="v">Spectral 600</span></li>
+            <li><span class="k">Título forte</span><span class="v">Spectral 700</span></li>
+            <li><span class="k">Ênfase</span><span class="v">Spectral Italic</span></li>
+            <li><span class="k">Corpo</span><span class="v">Inter 400</span></li>
+            <li><span class="k">Corpo médio</span><span class="v">Inter 500</span></li>
+            <li><span class="k">Rótulo / botão</span><span class="v">Inter 600</span></li>
+          </ul>
+          <p class="recipe" style="margin-top:12px">Logotipo: <b>Spectral 600</b>, entreletra <b>0,16em</b>, caixa alta.</p>
+        </div>
+        <div class="fg">
+          <h5>Componente · símbolo</h5>
+          <p class="recipe">Num frame quadrado de <b>100×100</b>:</p>
+          <p class="recipe">1. Texto "<b>L</b>" em <b>Spectral 700</b>, ~74px, na cor Marfim (sobre marinho) ou Marinho (sobre marfim), alinhado à esquerda-base.</p>
+          <p class="recipe">2. Círculo <b>Dourado</b> de <b>Ø16</b> (raio 8), no topo do "L", levemente à esquerda.</p>
+          <p class="recipe">3. Tile do app: retângulo <b>Marinho</b>, cantos <b>22</b>, com o "L" marfim por cima.</p>
+          <p class="recipe">Nos tamanhos minúsculos, aumente o círculo (Ø18–22) para ele não sumir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>LUMEN — manual de identidade visual v1.</strong> Este documento substitui as versões de exploração anteriores. Os arquivos de símbolo em SVG (<strong>lumen-monograma.svg</strong> e <strong>lumen-monograma-marinho.svg</strong>) acompanham este manual, já no traço serifado com o ponto ampliado.</p>
+  </footer>
+
+</div>
+</body>
+</html>

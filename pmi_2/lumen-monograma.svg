@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Monograma LUMEN">
+  <defs><style>
+    @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@700&amp;display=swap');
+    .l{ font-family:'Spectral', serif; font-weight:700; font-size:74px; }
+  </style></defs>
+  <text class="l" x="28" y="78" fill="#15294B">L</text>
+  <circle cx="34" cy="18" r="8" fill="#A67C3D"/>
+</svg>
