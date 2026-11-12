@@ -8,6 +8,7 @@ function ProcessoForm({ processoEmEdicao, onSalvar, onCancelar }) {
   const [dados, setDados] = useState(() =>
     processoEmEdicao ? { ...PROCESSO_VAZIO, ...processoEmEdicao } : PROCESSO_VAZIO,
   );
+  const [enviando, setEnviando] = useState(false);
   const editando = processoEmEdicao !== null;
 
   function alterarCampo(evento) {
@@ -15,15 +16,19 @@ function ProcessoForm({ processoEmEdicao, onSalvar, onCancelar }) {
     setDados((anteriores) => ({ ...anteriores, [name]: value }));
   }
 
-  function enviar(evento) {
+   async function enviar(evento) {
     evento.preventDefault();
+    if (enviando) return;
 
     const limpo = Object.fromEntries(
       Object.entries(dados).map(([campo, valor]) => [campo, valor.trim()]),
     );
     if (!limpo.numero || !limpo.cliente || !limpo.assunto || !limpo.traducao) return;
 
-    onSalvar({
+    // Espera a API: os campos só são limpos se o cadastro deu certo,
+    // assim o usuário não perde o que digitou quando a API falha
+    setEnviando(true);
+    const salvou = await onSalvar({
       numero: limpo.numero,
       cliente: limpo.cliente,
       assunto: limpo.assunto,
@@ -33,7 +38,8 @@ function ProcessoForm({ processoEmEdicao, onSalvar, onCancelar }) {
       vez: limpo.vez,
       status: limpo.status,
     });
-    if (!editando) setDados(PROCESSO_VAZIO);
+    setEnviando(false);
+    if (salvou && !editando) setDados(PROCESSO_VAZIO);
   }
 
   return (
@@ -140,9 +146,9 @@ function ProcessoForm({ processoEmEdicao, onSalvar, onCancelar }) {
             a tradução antes de publicar.
           </p>
 
-          <div className="form-acoes">
-            <button type="submit" className="botao botao-primario">
-              {editando ? 'Salvar alterações' : 'Cadastrar processo'}
+                    <div className="form-acoes">
+            <button type="submit" className="botao botao-primario" disabled={enviando}>
+              {enviando ? 'Salvando...' : editando ? 'Salvar alterações' : 'Cadastrar processo'}
             </button>
             {editando && (
               <button type="button" className="botao botao-secundario" onClick={onCancelar}>
@@ -150,6 +156,7 @@ function ProcessoForm({ processoEmEdicao, onSalvar, onCancelar }) {
               </button>
             )}
           </div>
+          
         </form>
       </div>
     </section>

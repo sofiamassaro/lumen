@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
+import Carregando from '../components/comum/Carregando.jsx';
+import MensagemErro from '../components/comum/MensagemErro.jsx';
 import StatusBadge from '../components/processos/StatusBadge.jsx';
 import { useProcessos } from '../hooks/useProcessos.js';
 import { formatarData } from '../utils/processo.js';
 
 function InicioPage() {
-  const { processos } = useProcessos();
+  const { processos, carregando, erro, recarregar } = useProcessos();
 
   const indicadores = [
     { rotulo: 'Processos', valor: processos.length },
@@ -31,42 +33,50 @@ function InicioPage() {
         </Link>
       </section>
 
-      <section className="indicadores">
-        {indicadores.map(({ rotulo, valor }) => (
-          <div key={rotulo} className="cartao indicador">
-            <span className="indicador-valor">{valor}</span>
-            <span className="legenda">{rotulo}</span>
-          </div>
-        ))}
-      </section>
-
-      <section className="cartao">
-        <header className="cartao-cabecalho">
-          <h2>Atualizados recentemente</h2>
-          <Link to="/processos" className="link-processo">
-            Ver todos
-          </Link>
-        </header>
-        {recentes.length === 0 ? (
-          <p className="legenda">Nenhum processo cadastrado ainda.</p>
-        ) : (
-          <ul className="lista-recentes">
-            {recentes.map((p) => (
-              <li key={p.id}>
-                <div>
-                  <Link to={`/processos/${p.id}`} className="link-processo">
-                    {p.assunto}
-                  </Link>
-                  <span className="legenda bloco">
-                    {p.cliente} · {formatarData(p.atualizadoEm)}
-                  </span>
-                </div>
-                <StatusBadge status={p.status} />
-              </li>
+      {carregando ? (
+        <Carregando />
+      ) : erro ? (
+        <MensagemErro mensagem={erro} onTentarNovamente={recarregar} />
+      ) : (
+        <>
+          <section className="indicadores">
+            {indicadores.map(({ rotulo, valor }) => (
+              <div key={rotulo} className="cartao indicador">
+                <span className="indicador-valor">{valor}</span>
+                <span className="legenda">{rotulo}</span>
+              </div>
             ))}
-          </ul>
-        )}
-      </section>
+          </section>
+
+          <section className="cartao">
+            <header className="cartao-cabecalho">
+              <h2>Atualizados recentemente</h2>
+              <Link to="/processos" className="link-processo">
+                Ver todos
+              </Link>
+            </header>
+            {recentes.length === 0 ? (
+              <p className="legenda">Nenhum processo cadastrado ainda.</p>
+            ) : (
+              <ul className="lista-recentes">
+                {recentes.map((p) => (
+                  <li key={p.id}>
+                    <div>
+                      <Link to={`/processos/${p.id}`} className="link-processo">
+                        {p.assunto}
+                      </Link>
+                      <span className="legenda bloco">
+                        {p.cliente} · {formatarData(p.atualizadoEm)}
+                      </span>
+                    </div>
+                    <StatusBadge status={p.status} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        </>
+      )}
     </div>
   );
 }

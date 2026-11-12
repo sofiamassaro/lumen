@@ -640,3 +640,27 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Mensagem de erro da API (Sprint 3) ===== */
+.mensagem-erro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--perigo);
+  border-left-width: 4px;
+  border-radius: var(--raio);
+  background: var(--papel);
+  color: var(--perigo);
+  font-size: 14px;
+}
+
+.mensagem-erro p {
+  flex: 1;
+  margin: 0;
+}
+
+.botao:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

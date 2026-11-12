@@ -1,5 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Pencil } from 'lucide-react';
+import Carregando from '../components/comum/Carregando.jsx';
+import MensagemErro from '../components/comum/MensagemErro.jsx';
 import PreviaCliente from '../components/processos/PreviaCliente.jsx';
 import StatusBadge from '../components/processos/StatusBadge.jsx';
 import { useProcessos } from '../hooks/useProcessos.js';
@@ -8,8 +10,12 @@ import { formatarData } from '../utils/processo.js';
 function ProcessoDetalhePage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { processos } = useProcessos();
+  const { processos, carregando, erro, recarregar } = useProcessos();
   const processo = processos.find((p) => p.id === id);
+
+  if (carregando) return <Carregando />;
+
+  if (erro) return <MensagemErro mensagem={erro} onTentarNovamente={recarregar} />;
 
   if (!processo) {
     return (
