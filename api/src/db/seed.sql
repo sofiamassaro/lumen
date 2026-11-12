@@ -1,4 +1,6 @@
 -- Dados de demonstração do LUMEN
+SET client_encoding = 'UTF8';
+
 INSERT INTO processos (numero, cliente, assunto, movimentacao, traducao, proximo_passo, vez, status) VALUES
 ('5003421-12.2026.8.24.0023', 'João da Silva', 'Revisão de contrato de financiamento de veículo',
  'Conclusos para decisão.',
